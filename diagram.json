@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "author": "Mohammad Reza MiM",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -121.66,
+      "left": -249.37,
+      "attrs": { "i2cAddress": "0x3c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "oled1:GND", "esp:GND.2", "black", [ "v-23.3", "h-82.61", "v273.7" ] ],
+    [ "oled1:VCC", "esp:VIN", "red", [ "v-28.42", "h-98.56", "v301.12" ] ],
+    [ "oled1:SCL", "esp:D22", "green", [ "v-12.62", "h319.51", "v159.85" ] ],
+    [ "oled1:SDA", "esp:D21", "green", [ "v-28.42", "h325.48", "v200.28" ] ]
+  ],
+  "dependencies": {}
+}

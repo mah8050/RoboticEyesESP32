@@ -2,14 +2,14 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
-#include <eyes.h>
+#include <eye.h>
 #define SCREEN_WIDTH 128 // OLED display width,  in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
   Serial.begin(9600);
-
+  Wire.begin(5, 4);
   // initialize OLED display with I2C address 0x3C
   if (!oled.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("failed to start SSD1306 OLED"));
@@ -24,24 +24,25 @@ void setup() {
   oled.setCursor(0, 10);       // set position to display
   oled.println("Hello"); // set text
   oled.display();              // display on OLED
+  delay(3000);
 }
 int currentTime;
 void normalEyes(void){
   currentTime = millis();
-  while((millis()-currentTime)<10000){
-    for(int i=0;i<=2;i++){
+  while((millis()-currentTime)<5000){
+    for(int i=1;i<=1;i++){
       oled.clearDisplay();
       oled.drawBitmap(0,0,fallArray[i],128,64,1);
       oled.display();
-      delay(0.07);
+      delay(50);
     }
     delay(200);
-    for(int i=2;i>=0;i--){
-      oled.clearDisplay();
-      oled.drawBitmap(0,0,fallArray[i],128,64,1);
-      oled.display();
-      delay(0.07);
-    }
+    // for(int i=1;i>=0;i--){
+    //   oled.clearDisplay();
+    //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
+    //   oled.display();
+    //   delay(50);
+    // }
   }
 }
 void wideningEyes(void){
@@ -49,7 +50,18 @@ void wideningEyes(void){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(0.07);
+    delay(50);
+  }
+
+}
+void anim(void){
+  for(int i=0;i<=299;i++){
+    oled.clearDisplay();
+    oled.drawBitmap(0,0,fallArray[i],128,64,1);
+    oled.display();
+    // if(i==178) delay(1000);
+    if(i==268) delay(1000);
+    delay(50);
   }
 
 }
@@ -58,7 +70,7 @@ void tighteningEyes(void){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(0.07);
+    delay(50);
   }
 }
 void heartsEyes(void){
@@ -66,7 +78,7 @@ void heartsEyes(void){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(0.07);
+    delay(50);
   }
   delay(200);
   // for(int i=53;i>=5;i--){
@@ -82,7 +94,7 @@ void angryEyes(void){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(0.07);
+    delay(50);
   }
   delay(200);
   // for(int i=99;i<=119;i++){
@@ -98,15 +110,15 @@ void excitedEyes(void){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(0.07);
+    delay(50);
   }
-  delay(200);
-  for(int i=149;i>=119;i--){
-    oled.clearDisplay();
-    oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    oled.display();
-    delay(0.07);
-  }  
+  delay(5000);
+  // for(int i=149;i>=119;i--){
+  //   oled.clearDisplay();
+  //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
+  //   oled.display();
+  //   delay(50);
+  // }  
   normalEyes();
 }
 void loop() {
@@ -117,11 +129,12 @@ void loop() {
   //   oled.display();
   //   // delay(0.07);
   // }
-normalEyes();
+  anim();
+// normalEyes();
 // delay(5000);
-excitedEyes();
+// excitedEyes();
 // delay(5000);
-angryEyes();
+// angryEyes();
 // delay(5000);
-heartsEyes();
+// heartsEyes();
 }

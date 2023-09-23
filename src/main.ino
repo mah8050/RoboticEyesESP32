@@ -30,111 +30,55 @@ int currentTime;
 void normalEyes(void){
   currentTime = millis();
   while((millis()-currentTime)<5000){
-    for(int i=1;i<=1;i++){
+    for(int i=0;i<=28;i++){
       oled.clearDisplay();
       oled.drawBitmap(0,0,fallArray[i],128,64,1);
       oled.display();
-      delay(50);
+      delay(60);
     }
-    delay(200);
-    // for(int i=1;i>=0;i--){
-    //   oled.clearDisplay();
-    //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    //   oled.display();
-    //   delay(50);
-    // }
+    delay(500);
+    for(int i=28;i>=18;i--){
+      oled.clearDisplay();
+      oled.drawBitmap(0,0,fallArray[i],128,64,1);
+      oled.display();
+      delay(60);
+    }
+    delay(3000);
   }
 }
-void wideningEyes(void){
-  for(int i=0;i<=5;i++){
-    oled.clearDisplay();
-    oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    oled.display();
-    delay(50);
-  }
-
-}
-void anim(void){
-  for(int i=0;i<=299;i++){
-    oled.clearDisplay();
-    oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    oled.display();
-    // if(i==178) delay(1000);
-    if(i==268) delay(1000);
-    delay(50);
-  }
-
-}
-void tighteningEyes(void){
-  for(int i=5;i>=0;i--){
-    oled.clearDisplay();
-    oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    oled.display();
-    delay(50);
-  }
-}
-void heartsEyes(void){
-  for(int i=5;i<=53;i++){
-    oled.clearDisplay();
-    oled.drawBitmap(0,0,fallArray[i],128,64,1);
-    oled.display();
-    delay(50);
-  }
-  delay(200);
-  // for(int i=53;i>=5;i--){
-  //   oled.clearDisplay();
-  //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
-  //   oled.display();
-  //   delay(0.07);
-  // }  
-  normalEyes();
+void worriedEyes(void){
+    for(int i=18;i<=116;i++){
+      oled.clearDisplay();
+      oled.drawBitmap(0,0,fallArray[i],128,64,1);
+      oled.display();
+      delay(45);
+    }
+    delay(3000);
 }
 void angryEyes(void){
-  for(int i=53;i<=119;i++){
+  for(int i=117;i<=165;i++){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(50);
+    delay(40);
   }
-  delay(200);
-  // for(int i=99;i<=119;i++){
-  //   oled.clearDisplay();
-  //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
-  //   oled.display();
-  //   delay(0.07);
-  // }  
-  normalEyes();
+  delay(3000);
 }
-void excitedEyes(void){
-  for(int i=119;i<=149;i++){
+void angrySearching(void){
+  for(int i=166;i<=268;i++){
     oled.clearDisplay();
     oled.drawBitmap(0,0,fallArray[i],128,64,1);
     oled.display();
-    delay(50);
+    delay(40);
   }
-  delay(5000);
-  // for(int i=149;i>=119;i--){
-  //   oled.clearDisplay();
-  //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
-  //   oled.display();
-  //   delay(50);
-  // }  
-  normalEyes();
+  delay(3000);
 }
+
 void loop() {
-  // put your main code here, to run repeatedly:
-  // for(int i=0;i<=(fallArray_LEN-1);i++){
-  //   oled.clearDisplay();
-  //   oled.drawBitmap(0,0,fallArray[i],128,64,1);
-  //   oled.display();
-  //   // delay(0.07);
-  // }
-  anim();
-// normalEyes();
-// delay(5000);
-// excitedEyes();
-// delay(5000);
-// angryEyes();
-// delay(5000);
-// heartsEyes();
+
+  worriedEyes();
+  normalEyes();
+  angrySearching();
+  angryEyes();
+
 }
